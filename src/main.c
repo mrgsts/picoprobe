@@ -52,7 +52,7 @@ int main(void) {
 
     while (1) {
         tud_task(); // tinyusb device task
-        cdc_task();
+        cdc_uart_task();
         probe_task();
         led_task();
     }
