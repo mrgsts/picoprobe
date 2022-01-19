@@ -1,0 +1,13 @@
+# Copy this file to /etc/udev/rules.d/
+
+ACTION!="add|change", GOTO="openocd_rules_end"
+SUBSYSTEM!="usb|tty|hidraw", GOTO="openocd_rules_end"
+
+# picoprobe
+ATTRS{idVendor}=="2e8a", ATTRS{idProduct}=="0004", MODE="660", GROUP="plugdev", TAG+="uaccess"
+ATTRS{idVendor}=="2e8a", ATTRS{idProduct}=="0004", ENV{ID_USB_INTERFACE_NUM}=="00", MODE="660", GROUP="plugdev", SYMLINK+="picoprobeuart0", TAG+="uaccess"
+ATTRS{idVendor}=="2e8a", ATTRS{idProduct}=="0004", ENV{ID_USB_INTERFACE_NUM}=="03", MODE="660", GROUP="plugdev", SYMLINK+="picoprobeuart1", TAG+="uaccess"
+
+LABEL="openocd_rules_end"
+
+
